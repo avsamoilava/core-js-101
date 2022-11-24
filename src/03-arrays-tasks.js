@@ -302,13 +302,13 @@ function get3TopItems(arr) {
  *
  * @example
  *   [ ]          => 0
- *   [ -1, 0, 1 ] => 1
+ *   [  ] => 1
  *   [ 1, 2, 3]   => 3
  *   [ null, 1, 'elephant' ] => 1
  *   [ 1, '2' ] => 1
  */
-function getPositivesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getPositivesCount(arr) {
+  return arr.reduce((acc, cur) => ((typeof cur === 'number' && cur > 0) ? acc + 1 : acc), 0);
 }
 
 /**
