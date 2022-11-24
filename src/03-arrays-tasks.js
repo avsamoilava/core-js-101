@@ -241,8 +241,7 @@ function getMovingSum(arr) {
   res.push(s);
   return res;
 }
-/*
-console.log(getMovingSum([ 1, 1, 1, 1, 1 ])) */
+
 /**
  * Returns every second item from the specified array:
  *
@@ -254,8 +253,8 @@ console.log(getMovingSum([ 1, 1, 1, 1, 1 ])) */
  * [ 'a', 'b', 'c' , null ]  => [ "b", null ]
  * [ "a" ] => []
  */
-function getSecondItems(/* arr */) {
-  throw new Error('Not implemented');
+function getSecondItems(arr) {
+  return arr.filter((e, i) => i % 2 !== 0);
 }
 
 
