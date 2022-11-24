@@ -201,12 +201,7 @@ function toCsvText(arr) {
   return arr.map((e, i) => (i === arr.length - 1 ? `${e.join(',')}` : `${e.join(',')}\n`)).join('');
 }
 
-/* console.log(toCsvText([
-  [0, 1, 2, 3, 4],
-  [10, 11, 12, 13, 14],
-  [20, 21, 22, 23, 24],
-  [30, 31, 32, 33, 34]
-])) */
+
 /**
  * Transforms the numeric array into the according array of squares:
  *   f(x) = x * x
@@ -218,8 +213,8 @@ function toCsvText(arr) {
  *   [ 0, 1, 2, 3, 4, 5 ] => [ 0, 1, 4, 9, 16, 25 ]
  *   [ 10, 100, -1 ]      => [ 100, 10000, 1 ]
  */
-function toArrayOfSquares(/* arr */) {
-  throw new Error('Not implemented');
+function toArrayOfSquares(arr) {
+  return arr.map((e) => e ** 2);
 }
 
 
