@@ -197,10 +197,16 @@ function getTail(arr, n) {
  *    +'20,21,22,23,24\n'
  *    +'30,31,32,33,34'
  */
-function toCsvText(/* arr */) {
-  throw new Error('Not implemented');
+function toCsvText(arr) {
+  return arr.map((e, i) => (i === arr.length - 1 ? `${e.join(',')}` : `${e.join(',')}\n`)).join('');
 }
 
+/* console.log(toCsvText([
+  [0, 1, 2, 3, 4],
+  [10, 11, 12, 13, 14],
+  [20, 21, 22, 23, 24],
+  [30, 31, 32, 33, 34]
+])) */
 /**
  * Transforms the numeric array into the according array of squares:
  *   f(x) = x * x
