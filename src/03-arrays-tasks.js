@@ -592,14 +592,16 @@ function getElementByIndexes(arr, indexes) {
  *
  */
 function swapHeadAndTail(a) {
-  const half = a.length % 2 === 0 ? a.length / 2 : Math.floor(a.length / 2);
-  const res = [];
-  res.push(a.slice(-half));
-  if (a.length % 2 !== 0) res.push(a[half]);
-  res.push(a.slice(0, half));
-  return res.flat();
+  if (a.length > 1) {
+    const half = a.length % 2 === 0 ? a.length / 2 : Math.floor(a.length / 2);
+    const res = [];
+    res.push(a.slice(-half));
+    if (a.length % 2 !== 0) res.push(a[half]);
+    res.push(a.slice(0, half));
+    return res.flat();
+  }
+  return a;
 }
-
 
 module.exports = {
   findElement,
