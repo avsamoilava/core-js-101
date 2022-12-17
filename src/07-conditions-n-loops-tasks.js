@@ -158,8 +158,12 @@ function doRectanglesOverlap(r1, r2) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  return (
+    (point.x < (circle.center.x + circle.radius) && point.x > (circle.center.x - circle.radius))
+  && (point.y < (circle.center.y + circle.radius) && point.y > (circle.center.y - circle.radius))
+  && Math.sqrt((point.y - circle.center.y) ** 2 + (point.x - circle.center.x) ** 2) < circle.radius
+  );
 }
 
 
@@ -174,10 +178,17 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  const o = {};
+  str.split('').reduce((a, c) => {
+    const [key, value] = [a, c];
+    if (key[value]) key[value] += 1;
+    else key[value] = 1;
+    return key;
+  }, o);
+  const noRepeat = Object.keys(o).filter((e) => o[e] === 1);
+  return noRepeat[0] || null;
 }
-
 
 /**
  * Returns the string representation of math interval,
