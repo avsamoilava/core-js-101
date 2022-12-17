@@ -271,8 +271,18 @@ function reverseInteger(num) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+function isCreditCardNumber(ccn) {
+  const arr = ccn.toString()
+    .split('')
+    .map(Number)
+    .reverse()
+    .map((e, i) => {
+      if ((i % 2)) return e * 2;
+      return e;
+    })
+    .map((e) => (e >= 10 ? e.toString().split('').map(Number).reduce((a, c) => a + c) : e))
+    .reduce((a, c) => a + c);
+  return !(arr % 10);
 }
 
 /**
@@ -289,10 +299,11 @@ function isCreditCardNumber(/* ccn */) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
+function getDigitalRoot(num) {
+  if (num <= 9) return num;
+  const n = num.toString().split('').map(Number).reduce((a, c) => a + c);
+  return getDigitalRoot(n);
 }
-
 
 /**
  * Returns true if the specified string has the balanced brackets and false otherwise.
