@@ -27,8 +27,11 @@
  *  21 => 'Fizz'
  *
  */
-function getFizzBuzz(/* num */) {
-  throw new Error('Not implemented');
+function getFizzBuzz(num) {
+  if (!(num % 3) && !(num % 5)) return 'FizzBuzz';
+  if (!(num % 3)) return 'Fizz';
+  if (!(num % 5)) return 'Buzz';
+  return num;
 }
 
 
@@ -43,8 +46,8 @@ function getFizzBuzz(/* num */) {
  *   5  => 120
  *   10 => 3628800
  */
-function getFactorial(/* n */) {
-  throw new Error('Not implemented');
+function getFactorial(n) {
+  return Array(n).fill(0).map((e, i) => i + 1).reduce((a, c) => a * c);
 }
 
 
@@ -60,10 +63,9 @@ function getFactorial(/* n */) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
-function getSumBetweenNumbers(/* n1, n2 */) {
-  throw new Error('Not implemented');
+function getSumBetweenNumbers(n1, n2) {
+  return Array(n2 - n1 + 1).fill(n1).map((e, i) => e + i).reduce((a, c) => a + c);
 }
-
 
 /**
  * Returns true, if a triangle can be built with the specified sides a, b, c
@@ -80,8 +82,9 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  const arr = [a, b, c].sort();
+  return arr[2] < (arr[0] + arr[1]);
 }
 
 
@@ -117,8 +120,15 @@ function isTriangle(/* a, b, c */) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(/* rect1, rect2 */) {
-  throw new Error('Not implemented');
+function doRectanglesOverlap(r1, r2) {
+  // eslint-disable-next-line no-mixed-operators
+  return (r1.left + r1.width) > r2.left && (r1.top + r1.height) > r2.top
+  // eslint-disable-next-line no-mixed-operators
+  || (r1.left + r1.width) > r2.left && (r1.top + r1.height) > (r2.top + r2.height)
+  // eslint-disable-next-line no-mixed-operators
+  || (r1.left + r1.width) > (r2.left + r2.width) && (r1.top + r1.height) > r2.top
+  // eslint-disable-next-line no-mixed-operators
+  || (r1.left + r1.width) > (r2.left + r2.width) && (r1.top + r1.height) > (r2.top + r2.height);
 }
 
 
