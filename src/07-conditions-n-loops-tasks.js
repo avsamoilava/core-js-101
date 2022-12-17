@@ -326,8 +326,21 @@ function getDigitalRoot(num) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
+function isBracketsBalanced(str) {
+  const example = {
+    '[': ']',
+    '{': '}',
+    '(': ')',
+    '<': '>',
+  };
+  const stack = [];
+  str.split('').forEach((e) => {
+    if (Object.keys(example).includes(e)) stack.push(e);
+    else if (example[stack[stack.length - 1]] === e) {
+      stack.pop();
+    } else stack.push(e);
+  });
+  return !stack.length;
 }
 
 
@@ -351,10 +364,9 @@ function isBracketsBalanced(/* str */) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  return parseInt(num, 10).toString(n);
 }
-
 
 /**
  * Returns the common directory path for specified array of full filenames.
